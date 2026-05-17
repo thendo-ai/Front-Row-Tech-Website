@@ -61,15 +61,15 @@ export function HeroSection() {
 
           {/* Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="block mb-2">Building Digital</span>
+            <span className="block mb-2">Websites, AI Automation &</span>
             <span className="bg-gradient-to-r from-[#ff4c4c] via-[#b30000] to-[#ff2626] bg-clip-text text-transparent">
-              Solutions That Scale
+              Software That Scales
             </span>
           </h1>
 
           {/* Description */}
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Front Row Tech builds modern websites, automation systems, and custom digital tools that help businesses grow and stay ahead.
+              Front Row Tech builds modern websites, AI-powered automation systems and custom digital tools that help businesses streamline operations, save time and scale smarter online.
           </p>
 
           {/* CTA Buttons */}
@@ -90,7 +90,7 @@ export function HeroSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              View Services
+              Explore Services
             </motion.button>
           </div>
 
@@ -103,10 +103,10 @@ export function HeroSection() {
           >
             {[
               { Icon: Mail, href: '#contact' },
-              { Icon: MessageCircle, href: 'https://wa.me/yournumber' },
-              { Icon: Instagram, href: 'https://instagram.com/yourusername' },
+              { Icon: MessageCircle, href: 'https://wa.me/+27614132858' },
+              { Icon: Instagram, href: 'https://instagram.com/frontrowtech.co.za' },
               { Icon: Linkedin, href: 'https://linkedin.com/in/yourusername' },
-              { Icon: Music, href: 'https://tiktok.com/@yourusername' },
+              { Icon: Music, href: 'https://tiktok.com/@frontrowtech' },
             ].map(({ Icon, href }, index) => (
               <motion.a
                 key={index}

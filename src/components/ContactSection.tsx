@@ -28,8 +28,8 @@ export function ContactSection() {
       icon: Mail,
       label: 'Email',
       value: 'info@frontrowtech.co.za',
-      href: 'mailto:ntsakongobeni399@gmail.com'
-    },  
+      href: 'mailto:info@frontrowtech.co.za'
+    },
     {
       icon: Phone,
       label: 'Phone',
@@ -38,40 +38,56 @@ export function ContactSection() {
     },
     {
       icon: MapPin,
-      label: 'Where to find us',
-      value: '200 Harvard Avenue \n Centurion\n South Africa\n0157',
+      label: 'Location',
+      value: 'Centurion, Gauteng\nSouth Africa',
       href: '#',
     },
   ];
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-[#0A0E27]" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
+    <section id="contact" className="relative py-24 lg:py-32 bg-transparent overflow-hidden" ref={ref}>
+
+      {/* 🔴 Background glow */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff2626]/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#b30000]/10 rounded-full blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* Header */}
         <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm uppercase tracking-wider text-cyan-400 mb-4">Get In Touch</h2>
+          <h2 className="text-sm uppercase tracking-wider text-[#ff2626] mb-4">
+            Get In Touch
+          </h2>
+
           <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Let's Build Something <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Amazing</span>
+            Let's Build Something{' '}
+            <span className="bg-gradient-to-r from-[#ff4c4c] via-[#ff2626] to-[#b30000] bg-clip-text text-transparent">
+              Powerful
+            </span>
           </h3>
+
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to transform your digital presence? Get in touch and let's discuss how we can help your business grow.
+            Ready to grow your business? Let’s talk about how we can build something that actually works for you.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+
+          {/* LEFT - CONTACT INFO */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="text-2xl font-bold text-white mb-8">Contact Information</h4>
-            
+            <h4 className="text-2xl font-bold text-white mb-8">
+              Contact Information
+            </h4>
+
             <div className="space-y-6 mb-12">
               {contactInfo.map((info, index) => (
                 <motion.a
@@ -82,12 +98,16 @@ export function ContactSection() {
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.1 * index }}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <info.icon className="text-cyan-400" size={24} />
+                  <div className="flex-shrink-0 w-12 h-12 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:border-[#ff2626]/40 transition-all duration-300">
+                    <info.icon className="text-[#ff3b3b]" size={24} />
                   </div>
+
                   <div>
-                    <div className="text-sm text-gray-400 mb-1">{info.label}</div>
-                    <div className="text-lg text-white group-hover:text-cyan-400 transition-colors duration-300">
+                    <div className="text-sm text-gray-400 mb-1">
+                      {info.label}
+                    </div>
+
+                    <div className="text-lg text-white group-hover:text-[#ff3b3b] whitespace-pre-line transition-colors duration-300">
                       {info.value}
                     </div>
                   </div>
@@ -95,9 +115,12 @@ export function ContactSection() {
               ))}
             </div>
 
-            {/* Additional Info */}
-            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-400/20 rounded-2xl p-8">
-              <h5 className="text-xl font-bold text-white mb-4">Business Hours</h5>
+            {/* Business Hours */}
+            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+              <h5 className="text-xl font-bold text-white mb-4">
+                Business Hours
+              </h5>
+
               <div className="space-y-2 text-gray-300">
                 <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
                 <p>Saturday: 9:00 AM - 2:00 PM</p>
@@ -106,88 +129,52 @@ export function ContactSection() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* RIGHT - FORM */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  {...register('name', { required: 'Name is required' })}
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50 focus:bg-white/10 transition-all duration-300"
-                  placeholder="John Doe"
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
-                )}
-              </div>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address',
-                    },
-                  })}
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50 focus:bg-white/10 transition-all duration-300"
-                  placeholder="john@company.com"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
-                )}
-              </div>
+              {/* INPUT STYLE REUSE */}
+              {[
+                { id: 'name', label: 'Full Name *', placeholder: 'John Doe', type: 'text', required: true },
+                { id: 'email', label: 'Email Address *', placeholder: 'john@company.com', type: 'email', required: true },
+                { id: 'company', label: 'Company', placeholder: 'Your Company', type: 'text' },
+              ].map((field) => (
+                <div key={field.id}>
+                  <label className="block text-sm text-gray-300 mb-2">
+                    {field.label}
+                  </label>
 
-              {/* Company */}
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                  Company
-                </label>
-                <input
-                  {...register('company')}
-                  type="text"
-                  id="company"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50 focus:bg-white/10 transition-all duration-300"
-                  placeholder="Your Company"
-                />
-              </div>
+                  <input
+                    {...register(field.id as keyof ContactFormData, field.required ? { required: `${field.label} is required` } : {})}
+                    type={field.type}
+                    className="w-full px-4 py-3 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ff2626]/50 focus:bg-white/[0.06] transition-all duration-300"
+                    placeholder={field.placeholder}
+                  />
+                </div>
+              ))}
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm text-gray-300 mb-2">
                   Message *
                 </label>
+
                 <textarea
                   {...register('message', { required: 'Message is required' })}
-                  id="message"
                   rows={5}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50 focus:bg-white/10 transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ff2626]/50 focus:bg-white/[0.06] transition-all duration-300 resize-none"
                   placeholder="Tell us about your project..."
                 />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
-                )}
               </div>
 
-              {/* Submit Button */}
+              {/* BUTTON */}
               <motion.button
                 type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-medium hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full px-8 py-4 bg-gradient-to-r from-[#ff4c4c] via-[#ff2626] to-[#b30000] text-white rounded-xl font-medium hover:shadow-[0_0_25px_rgba(255,38,38,0.5)] transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -195,17 +182,20 @@ export function ContactSection() {
                 <Send size={18} />
               </motion.button>
 
+              {/* SUCCESS */}
               {isSubmitted && (
                 <motion.div
-                  className="p-4 bg-green-500/10 border border-green-400/30 rounded-xl text-green-400 text-center"
+                  className="p-4 bg-[#ff2626]/10 border border-[#ff2626]/30 rounded-xl text-[#ff3b3b] text-center"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
                   Thank you! We'll get back to you within 24 hours.
                 </motion.div>
               )}
+
             </form>
           </motion.div>
+
         </div>
       </div>
     </section>
