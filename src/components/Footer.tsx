@@ -23,7 +23,7 @@ export function Footer() {
       { label: 'Automation', href: '#services' },
       { label: 'AI Solutions', href: '#services' },
       { label: 'Software Testing', href: '#services' },
-      { label: 'IT Consulting', href: '#services' },
+      { label: 'Digital Strategy', href: '#services' },
     ],
     legal: [
       { label: 'Privacy Policy', href: '#' },

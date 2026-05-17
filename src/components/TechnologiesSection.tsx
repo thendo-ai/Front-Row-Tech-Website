@@ -1,208 +1,232 @@
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useInView } from './hooks/useInView';
+import { motion } from 'motion/react';
 import {
-  Code,
+  Atom,
+  Code2,
+  FileCode2,
+  Braces,
+  ServerCog,
   Database,
-  Cloud,
-  Cpu,
-  ShoppingBag,
-  BarChart3,
   Bot,
-  Zap,
-  Globe,
-  Bug,
-  Server,
   Workflow,
+  Cloud,
+  Container,
+  Github,
+  ShoppingCart,
+  CreditCard,
+  BarChart3,
+  Gauge,
+  SearchCheck,
+  ShieldCheck,
+  Bug,
+  TestTube2,
+  LineChart,
+  Flame,
+  Boxes,
+  Globe,
+  Layers,
+  Zap,
 } from 'lucide-react';
+import { useInView } from './hooks/useInView';
 
-function FloatingCapabilityCard({
-  capability,
-  index,
-  isInView,
-}: {
-  capability: {
-    icon: React.ElementType;
-    title: string;
-    description: string;
-  };
-  index: number;
-  isInView: boolean;
-}) {
-  const { scrollY } = useScroll();
-  const floatY = useTransform(
-    scrollY,
-    [0, 1000],
-    [0, index % 2 === 0 ? -20 : 20]
-  );
+const techStack = [
+  { name: 'React', icon: Atom },
+  { name: 'Next.js', icon: Layers },
+  { name: 'TypeScript', icon: FileCode2 },
+  { name: 'JavaScript', icon: Braces },
+  { name: 'Tailwind CSS', icon: Zap },
+  { name: 'HTML5', icon: Code2 },
+  { name: 'CSS3', icon: FileCode2 },
+  { name: 'Node.js', icon: ServerCog },
+  { name: 'Express.js', icon: ServerCog },
+  { name: 'Python', icon: Code2 },
+  { name: 'Flask', icon: Flame },
+  { name: 'REST APIs', icon: Braces },
+  { name: 'OpenAI', icon: Bot },
+  { name: 'AI Chatbots', icon: Bot },
+  { name: 'Workflow Automation', icon: Workflow },
+  { name: 'PostgreSQL', icon: Database },
+  { name: 'MySQL', icon: Database },
+  { name: 'MongoDB', icon: Database },
+  { name: 'Firebase', icon: Flame },
+  { name: 'SQLite', icon: Database },
+  { name: 'AWS', icon: Cloud },
+  { name: 'Vercel', icon: Globe },
+  { name: 'Netlify', icon: Globe },
+  { name: 'Docker', icon: Container },
+  { name: 'GitHub Actions', icon: Github },
+  { name: 'Shopify', icon: ShoppingCart },
+  { name: 'WooCommerce', icon: ShoppingCart },
+  { name: 'Payment Gateways', icon: CreditCard },
+  { name: 'Google Analytics', icon: BarChart3 },
+  { name: 'Google Tag Manager', icon: LineChart },
+  { name: 'Core Web Vitals', icon: Gauge },
+  { name: 'Looker Studio', icon: BarChart3 },
+  { name: 'API Testing', icon: TestTube2 },
+  { name: 'Automation Testing', icon: ShieldCheck },
+];
 
-  return (
-    <motion.div
-      style={{ y: floatY }}
-      className="bg-white/[0.025] backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-[#ff2626]/40 hover:shadow-[0_0_25px_rgba(255,38,38,0.22)] transition-all duration-300 group"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.4, delay: 0.05 * index }}
-      whileHover={{ y: -8 }}
-    >
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{
-          duration: 4 + index * 0.3,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
-        <div className="w-14 h-14 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-          <capability.icon className="text-[#ff3b3b]" size={28} />
-        </div>
-
-        <h4 className="text-lg font-bold text-white mb-2">
-          {capability.title}
-        </h4>
-
-        <p className="text-gray-400 text-sm leading-relaxed">
-          {capability.description}
-        </p>
-      </motion.div>
-    </motion.div>
-  );
-}
+const capabilities = [
+  {
+    title: 'Frontend Development',
+    icon: Code2,
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
+  },
+  {
+    title: 'Backend & APIs',
+    icon: ServerCog,
+    items: ['Node.js', 'Express.js', 'Python', 'Flask', 'REST APIs', 'Authentication'],
+  },
+  {
+    title: 'AI & Automation',
+    icon: Bot,
+    items: ['OpenAI', 'AI Chatbots', 'Workflow Automation', 'AI Assistants', 'Smart Integrations'],
+  },
+  {
+    title: 'Databases',
+    icon: Database,
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'SQLite'],
+  },
+  {
+    title: 'Cloud & Deployment',
+    icon: Cloud,
+    items: ['AWS', 'Vercel', 'Netlify', 'Firebase Hosting', 'Docker', 'GitHub Actions'],
+  },
+  {
+    title: 'E-Commerce Systems',
+    icon: ShoppingCart,
+    items: ['Shopify', 'WooCommerce', 'Payment Gateways', 'Inventory Systems', 'Analytics Tracking'],
+  },
+  {
+    title: 'SEO & Analytics',
+    icon: SearchCheck,
+    items: ['Technical SEO', 'Google Analytics', 'Google Tag Manager', 'Core Web Vitals', 'Looker Studio'],
+  },
+  {
+    title: 'Testing & QA',
+    icon: Bug,
+    items: ['Manual Testing', 'API Testing', 'Automation Testing', 'Bug Reporting', 'Performance Testing'],
+  },
+];
 
 export function TechnologiesSection() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
-
-  const capabilities = [
-    {
-      icon: Globe,
-      title: 'Web Development',
-      description: 'Modern, responsive websites and web apps for businesses that need a strong online presence.',
-    },
-    {
-      icon: ShoppingBag,
-      title: 'E-Commerce Systems',
-      description: 'Online stores with secure payments, product management, and mobile-friendly shopping experiences.',
-    },
-    {
-      icon: Workflow,
-      title: 'Automation',
-      description: 'Smart workflows that reduce admin, save time, and help your team work more efficiently.',
-    },
-    {
-      icon: Bot,
-      title: 'AI Solutions',
-      description: 'AI-powered tools, chatbots, and insights that help businesses work smarter and faster.',
-    },
-    {
-      icon: Bug,
-      title: 'Software Testing',
-      description: 'Manual, automated, API, and usability testing to make sure your platforms work properly.',
-    },
-    {
-      icon: BarChart3,
-      title: 'Dashboards',
-      description: 'Business dashboards for tracking leads, sales, customer activity, and performance data.',
-    },
-    {
-      icon: Database,
-      title: 'APIs & Databases',
-      description: 'Reliable APIs and databases designed for secure, scalable, and connected digital systems.',
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud & Hosting',
-      description: 'Scalable hosting, deployment, and cloud infrastructure to keep your systems running smoothly.',
-    },
-  ];
-
-  const techStack = [
-    { icon: Code, name: 'React' },
-    { icon: Code, name: 'Next.js' },
-    { icon: Code, name: 'TypeScript' },
-    { icon: Server, name: 'Node.js' },
-    { icon: Code, name: 'Python' },
-    { icon: Database, name: 'PostgreSQL' },
-    { icon: Database, name: 'MongoDB' },
-    { icon: Cloud, name: 'AWS' },
-    { icon: Cpu, name: 'Docker' },
-    { icon: Workflow, name: 'APIs' },
-    { icon: Bug, name: 'Testing' },
-    { icon: Bot, name: 'AI Tools' },
-  ];
+  const repeatedStack = [...techStack, ...techStack];
 
   return (
     <section
+      id="technologies"
       ref={ref}
-      className="relative py-24 lg:py-32 bg-[#050714] overflow-hidden"
+      className="relative overflow-hidden bg-transparent py-24 lg:py-32"
     >
-      {/* Background glow */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff2626]/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#b30000]/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-[#ff2626]/10 blur-3xl" />
+      <div className="absolute right-10 bottom-20 h-96 w-96 rounded-full bg-[#b30000]/10 blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
-          className="text-center mb-20"
+          className="mb-14 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm uppercase tracking-wider text-[#ff2626] mb-4">
+          <h2 className="mb-4 text-sm uppercase tracking-wider text-[#ff2626]">
             Technologies & Capabilities
           </h2>
 
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Powered by{' '}
+          <h3 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            Technology Stack Built for{' '}
             <span className="bg-gradient-to-r from-[#ff4c4c] via-[#ff2626] to-[#b30000] bg-clip-text text-transparent">
-              Modern Tech
+              Growth
             </span>
           </h3>
 
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            We use practical, modern technology to build websites, systems, automation, AI tools, and testing solutions that help businesses grow.
+          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-400">
+            We use modern frameworks, cloud tools, AI systems and automation technologies
+            to build fast, scalable and reliable digital solutions for growing businesses.
           </p>
         </motion.div>
 
-        {/* Capabilities Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {capabilities.map((capability, index) => (
-            <FloatingCapabilityCard
-              key={index}
-              capability={capability}
-              index={index}
-              isInView={isInView}
-            />
-          ))}
+        {/* Auto-scrolling tech stack */}
+        <div className="relative mb-16 overflow-hidden rounded-2xl border border-[#ff2626]/20 bg-white/[0.025] py-5 backdrop-blur-xl">
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#050714] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#050714] to-transparent" />
+
+          <motion.div
+            className="flex w-max gap-4"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{
+              duration: 35,
+              ease: 'linear',
+              repeat: Infinity,
+            }}
+          >
+            {repeatedStack.map((tech, index) => {
+              const Icon = tech.icon;
+
+              return (
+                <div
+                  key={`${tech.name}-${index}`}
+                  className="flex items-center gap-3 rounded-full border border-[#ff2626]/25 bg-[#140505]/70 px-5 py-3 text-sm text-gray-200 shadow-[0_0_18px_rgba(255,38,38,0.12)]"
+                >
+                  <Icon className="h-4 w-4 text-[#ff3b3b]" strokeWidth={2.2} />
+                  <span className="whitespace-nowrap">{tech.name}</span>
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
 
-        {/* Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h4 className="text-2xl font-bold text-white text-center mb-8">
-            Our Tech Stack
-          </h4>
+        {/* Capability carousel */}
+        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scrollbar-hide">
+          {capabilities.map((capability, index) => {
+            const Icon = capability.icon;
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {techStack.map((tech, index) => (
+            return (
               <motion.div
-                key={index}
-                className="group flex items-center gap-2 px-5 py-3 bg-white/[0.025] backdrop-blur-xl border border-white/10 rounded-full text-white hover:bg-[#ff2626]/10 hover:border-[#ff2626]/40 hover:text-[#ff3b3b] hover:shadow-[0_0_20px_rgba(255,38,38,0.22)] transition-all duration-300"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.02 * index }}
-                whileHover={{ scale: 1.08, y: -3 }}
+                key={capability.title}
+                className="group min-w-[85%] snap-center rounded-2xl bg-gradient-to-br from-[#ff2626]/30 via-white/5 to-[#b30000]/25 p-[1px] shadow-[0_0_25px_rgba(255,38,38,0.12)] sm:min-w-[48%] lg:min-w-[31.5%]"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.08 * index }}
+                whileHover={{ y: -8 }}
               >
-                <tech.icon
-                  className="text-[#ff3b3b] group-hover:scale-110 transition-transform duration-300"
-                  size={18}
-                />
-                <span className="text-sm font-medium">{tech.name}</span>
+                <div className="relative h-full min-h-[340px] rounded-2xl border border-[#ff2626]/20 bg-[#070914]/90 p-8 backdrop-blur-xl transition-all duration-300 group-hover:border-[#ff2626]/50 group-hover:shadow-[0_0_35px_rgba(255,38,38,0.28)]">
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-transparent" />
+
+                  <div className="relative z-10">
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-[#ff2626]/50 bg-[#140505]/90 shadow-[0_0_22px_rgba(255,38,38,0.22)] backdrop-blur-xl transition-all duration-300 group-hover:border-[#ff4c4c]/70 group-hover:shadow-[0_0_35px_rgba(255,38,38,0.35)]">
+                      <Icon className="h-7 w-7 text-[#ff3b3b]" strokeWidth={2.2} />
+                    </div>
+
+                    <h4 className="mb-5 text-2xl font-bold text-white">
+                      {capability.title}
+                    </h4>
+
+                    <div className="flex flex-wrap gap-2">
+                      {capability.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-[#ff2626]/20 bg-white/[0.03] px-3 py-2 text-sm text-gray-300"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.p
+          className="mx-auto mt-10 max-w-3xl text-center text-base leading-relaxed text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          We choose technologies based on performance, scalability and long-term business
+          value — ensuring every solution is secure, maintainable and built for growth.
+        </motion.p>
       </div>
     </section>
   );
