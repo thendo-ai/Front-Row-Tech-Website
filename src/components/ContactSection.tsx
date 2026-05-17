@@ -45,7 +45,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-transparent overflow-hidden" ref={ref}>
+    <section id="contact" className="relative py-24 lg:py-32 bg-[#050714] overflow-hidden" ref={ref}>
 
       {/* 🔴 Background glow */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff2626]/10 rounded-full blur-3xl" />
