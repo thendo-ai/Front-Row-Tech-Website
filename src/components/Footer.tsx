@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Linkedin, Phone, Instagram, Mail } from 'lucide-react';
 import logo from '../assets/logo.png';
-
+import { Helmet } from 'react-helmet-async';
 export function Footer() {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -33,6 +33,29 @@ export function Footer() {
   };
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <footer className="relative bg-[#050714] border-t border-white/10 overflow-hidden">
 
       {/* Glow */}
@@ -173,5 +196,6 @@ export function Footer() {
       {/* Bottom Accent */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff4c4c] via-[#ff2626] to-[#b30000]" />
     </footer>
+    </>
   );
 }

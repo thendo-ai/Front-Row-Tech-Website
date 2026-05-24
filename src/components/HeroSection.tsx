@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Linkedin, Mail, MessageCircle, Instagram, Music } from 'lucide-react';
 import bgImage from '../assets/City_of_JHB.png';
+import { Helmet } from 'react-helmet-async';
 
 export function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -11,6 +12,29 @@ export function HeroSection() {
   };
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
@@ -138,5 +162,6 @@ export function HeroSection() {
         </div>
       </motion.div>
     </section>
+    </>
   );
 }

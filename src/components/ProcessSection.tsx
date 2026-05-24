@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
 import { Search, Palette, Code, Rocket } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export function ProcessSection() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
@@ -33,6 +34,29 @@ export function ProcessSection() {
   ];
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section
       id="process"
       ref={ref}
@@ -155,5 +179,6 @@ className="flex min-w-[180px] items-center justify-center rounded-xl border bord
         </div>
       </div>
     </section>
+    </>
   );
 }

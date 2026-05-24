@@ -9,6 +9,8 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import officeImage from '../assets/office_img.png';
+import { Helmet } from 'react-helmet-async';
+
 
 export function WhyChooseSection() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
@@ -47,6 +49,29 @@ export function WhyChooseSection() {
   ];
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section
       className="relative py-24 lg:py-32 bg-transparent overflow-hidden"
       ref={ref}
@@ -173,5 +198,6 @@ export function WhyChooseSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

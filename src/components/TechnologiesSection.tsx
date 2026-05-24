@@ -1,4 +1,6 @@
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
+
 import {
   Atom,
   Code2,
@@ -113,6 +115,29 @@ export function TechnologiesSection() {
   const repeatedStack = [...techStack, ...techStack];
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section
       id="technologies"
       ref={ref}
@@ -229,5 +254,6 @@ export function TechnologiesSection() {
         </motion.p>
       </div>
     </section>
+    </>
   );
 }

@@ -3,7 +3,7 @@ import { useInView } from './hooks/useInView';
 import { useForm } from 'react-hook-form';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
-
+import { Helmet } from 'react-helmet-async';
 interface ContactFormData {
   name: string;
   email: string;
@@ -12,6 +12,10 @@ interface ContactFormData {
 }
 
 export function ContactSection() {
+
+
+
+
   const [ref, isInView] = useInView({ threshold: 0.2 });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>();
@@ -45,6 +49,29 @@ export function ContactSection() {
   ];
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section id="contact" className="relative py-24 lg:py-32 bg-[#050714] overflow-hidden" ref={ref}>
 
       {/* 🔴 Background glow */}
@@ -199,5 +226,6 @@ export function ContactSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

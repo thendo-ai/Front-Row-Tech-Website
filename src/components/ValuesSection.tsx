@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
 import { Lightbulb, Users, Handshake, TrendingUp } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export function ValuesSection() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
@@ -29,6 +30,29 @@ export function ValuesSection() {
   ];
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section className="relative py-24 lg:py-32 bg-[#050714] overflow-hidden" ref={ref}>
       {/* Background Glow */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff2626]/10 rounded-full blur-3xl" />
@@ -120,5 +144,6 @@ export function ValuesSection() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

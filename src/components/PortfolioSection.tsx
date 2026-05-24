@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Helmet } from 'react-helmet-async';
 
 import businessWebsite from '../assets/sa-business-website.png';
 import ecommerceStore from '../assets/sa-ecommerce-store.png';
@@ -69,6 +70,29 @@ export function PortfolioSection() {
   };
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section
       id="work"
       className="relative overflow-hidden bg-transparent py-20 lg:py-28"
@@ -219,5 +243,6 @@ export function PortfolioSection() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logo from '../assets/logo.png';
+import { Helmet } from 'react-helmet-async';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,6 +37,29 @@ export function Navigation() {
   };
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
@@ -148,5 +172,6 @@ export function Navigation() {
         )}
       </AnimatePresence>
     </motion.nav>
+    </>
   );
 }

@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
+import { Helmet } from 'react-helmet-async';
+
 import {
   Globe,
   ShoppingCart,
@@ -58,6 +60,29 @@ export function ServicesSection() {
   ];
 
   return (
+
+     <>
+      <Helmet>
+        <title>
+          Front Row Tech | Websites, Online Stores & Automation
+        </title>
+
+        <meta
+          name="description"
+          content="Front Row Tech builds websites, ecommerce stores, booking systems and business automation solutions for South African businesses."
+        />
+
+        <meta
+          name="keywords"
+          content="web design South Africa, ecommerce websites, booking systems, business automation"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.frontrowtech.co.za/"
+        />
+      </Helmet>
+
     <section
       id="services"
       ref={ref}
@@ -162,5 +187,6 @@ export function ServicesSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }
