@@ -61,32 +61,32 @@ export function ServicesSection() {
     <section
       id="services"
       ref={ref}
-      className="relative overflow-hidden bg-transparent py-24 lg:py-32"
+      className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-32"
     >
       {/* Background glow */}
-      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-[#ff2626]/10 blur-3xl" />
-      <div className="absolute right-10 bottom-20 h-96 w-96 rounded-full bg-[#b30000]/10 blur-3xl" />
+      <div className="absolute left-0 top-10 h-56 w-56 rounded-full bg-[#ff2626]/10 blur-3xl sm:left-10 sm:top-20 sm:h-72 sm:w-72" />
+      <div className="absolute bottom-10 right-0 h-64 w-64 rounded-full bg-[#b30000]/10 blur-3xl sm:right-10 sm:bottom-20 sm:h-96 sm:w-96" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          className="mb-20 text-center"
+          className="mb-12 text-center sm:mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-sm uppercase tracking-wider text-[#ff2626]">
+          <h2 className="mb-3 text-xs uppercase tracking-wider text-[#ff2626] sm:mb-4 sm:text-sm">
             What We Do
           </h2>
 
-          <h3 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+          <h3 className="mx-auto mb-5 max-w-4xl text-3xl font-bold leading-tight text-white sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
             Services That{' '}
             <span className="bg-gradient-to-r from-[#ff4c4c] via-[#ff2626] to-[#b30000] bg-clip-text text-transparent">
               Drive Growth
             </span>
           </h3>
 
-          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-400">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-400 sm:text-lg lg:text-xl">
             From modern websites to AI automation and scalable software, Front
             Row Tech builds digital solutions designed to help businesses grow
             smarter online.
@@ -94,7 +94,7 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 items-stretch gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -102,43 +102,43 @@ export function ServicesSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * index }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -8 }}
             >
-              <div className="relative h-full min-h-[390px] rounded-2xl border border-[#ff2626]/20 bg-[#070914]/90 p-8 backdrop-blur-xl transition-all duration-300 group-hover:border-[#ff2626]/50 group-hover:shadow-[0_0_35px_rgba(255,38,38,0.28)]">
+              <div className="relative h-full min-h-[340px] rounded-2xl border border-[#ff2626]/20 bg-[#070914]/90 p-5 backdrop-blur-xl transition-all duration-300 group-hover:border-[#ff2626]/50 group-hover:shadow-[0_0_35px_rgba(255,38,38,0.28)] sm:min-h-[370px] sm:p-6 lg:min-h-[390px] lg:p-8">
                 {/* Glass highlight */}
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-transparent" />
 
                 <div className="relative z-10 flex h-full flex-col">
                   {/* Icon */}
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-[#ff2626]/50 bg-[#140505]/90 shadow-[0_0_22px_rgba(255,38,38,0.22)] backdrop-blur-xl transition-all duration-300 group-hover:border-[#ff4c4c]/70 group-hover:shadow-[0_0_35px_rgba(255,38,38,0.35)]">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#ff2626]/50 bg-[#140505]/90 shadow-[0_0_22px_rgba(255,38,38,0.22)] backdrop-blur-xl transition-all duration-300 group-hover:border-[#ff4c4c]/70 group-hover:shadow-[0_0_35px_rgba(255,38,38,0.35)] sm:mb-6 sm:h-16 sm:w-16">
                     <service.icon
                       className="text-[#ff3b3b]"
-                      size={28}
+                      size={26}
                       strokeWidth={2.2}
                     />
                   </div>
 
-                  <h4 className="mb-4 text-2xl font-bold text-white">
+                  <h4 className="mb-3 text-xl font-bold leading-snug text-white sm:mb-4 sm:text-2xl">
                     {service.title}
                   </h4>
 
-                  <p className="mb-6 leading-relaxed text-gray-400">
+                  <p className="mb-5 text-sm leading-relaxed text-gray-400 sm:mb-6 sm:text-base">
                     {service.description}
                   </p>
 
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5 sm:space-y-3">
                     {service.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-center gap-3 text-sm text-gray-300"
+                        className="flex items-start gap-3 text-sm leading-relaxed text-gray-300"
                       >
-                        <div className="h-1.5 w-1.5 rounded-full bg-[#ff3b3b]" />
-                        {feature}
+                        <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff3b3b]" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-auto flex items-center gap-2 pt-6 text-[#ff3b3b] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="mt-auto flex items-center gap-2 pt-6 text-[#ff3b3b] opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100">
                     <span className="text-sm font-medium">Learn More</span>
 
                     <svg
