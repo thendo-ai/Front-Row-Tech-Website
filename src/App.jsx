@@ -41,7 +41,6 @@ function App() {
         {/* Continue fixed background */}
         <ServicesSection />
         <ProcessSection />
-        <TechnologiesSection />
         <WhyChooseSection />
         <PortfolioSection />
 
